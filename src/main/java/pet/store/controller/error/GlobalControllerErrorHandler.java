@@ -3,7 +3,8 @@ package pet.store.controller.error;
 
 	import java.time.ZonedDateTime;
 	import java.time.format.DateTimeFormatter;
-	import java.util.NoSuchElementException;
+import java.util.Map;
+import java.util.NoSuchElementException;
 
 	import org.springframework.dao.DuplicateKeyException;
 	import org.springframework.http.HttpStatus;
@@ -46,8 +47,9 @@ package pet.store.controller.error;
 		
 		@ExceptionHandler(NoSuchElementException.class)
 		@ResponseStatus(code = HttpStatus.NOT_FOUND)
-		public ExceptionMessage handleNoSuchElementException(NoSuchElementException ex, WebRequest webRequest) {
-			return buildExceptionMessage(ex, HttpStatus.NOT_FOUND, webRequest, LogStatus.MESSAGE_ONLY);
+		public Map<String, String>handleNoSuchElementException(NoSuchElementException ex) {
+			log.error("Exception: {}", ex.toString());
+			return Map.of("message", ex.toString());
 		}
 		
 		@ExceptionHandler(DuplicateKeyException.class)

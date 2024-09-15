@@ -14,8 +14,6 @@ import pet.store.entity.PetStore;
 public class PetStoreData {
 	
 
-	
-
 	private Long petStoreId;
 	private String petStoreName;
 	private String petStoreAddress;
@@ -46,6 +44,4 @@ public class PetStoreData {
 		}
 	}
 		
-
-	
 }
